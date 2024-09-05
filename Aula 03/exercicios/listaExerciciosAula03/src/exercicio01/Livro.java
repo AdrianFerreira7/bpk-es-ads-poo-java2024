@@ -1,58 +1,29 @@
 package exercicio01;
 
-import java.util.Objects;
-
-/**
- * 1 - Crie uma classe chamada Livro com atributos como titulo,
- * autor, e numeroDePaginas.
- * Adicione métodos para abrir o livro e ler uma página.
- */
 public class Livro {
-    public String titulo;
-    public String autor;
-    public Integer numeroDePaginas;
-    private Boolean aberto = false;
-    private Integer paginaAtual = 1;
-    private Boolean concluido = false;
+    private String titulo;
+    private String autor;
+    private int numeroDePaginas;
+    private int paginaAtual;
 
-    public Livro(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public Livro(String titulo, String autor, Integer numeroDePaginas) {
+    public Livro(String titulo, String autor, int numeroDePaginas) {
         this.titulo = titulo;
         this.autor = autor;
         this.numeroDePaginas = numeroDePaginas;
+        this.paginaAtual = 0;
     }
 
-    public void abrirLivro(){
-        System.out.println("Abrindo livro...");
-        this.aberto = true;
+    public void abrir() {
+        System.out.println("O livro '" + titulo + "' está aberto.");
     }
 
-    public void lerPagina(){
-        System.out.println("Lendo a página...");
-        if(paginaAtual.equals(numeroDePaginas)){
-            concluido = true;
-        }else{
+    public void lerPagina() {
+        if (paginaAtual < numeroDePaginas) {
+            System.out.println("Lendo a página " + (paginaAtual + 1) + " do livro '" + titulo + "'.");
             paginaAtual++;
+        } else {
+            System.out.println("Você já leu todas as páginas do livro '" + titulo + "'.");
         }
     }
-
-    public Boolean livroAberto() {
-        return aberto;
-    }
-
-    public Integer getPaginaAtual() {
-        return paginaAtual;
-    }
-
-    @Override
-    public String toString() {
-        return "Livro{" +
-                "titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", numeroDePaginas=" + numeroDePaginas +
-                '}';
-    }
 }
+

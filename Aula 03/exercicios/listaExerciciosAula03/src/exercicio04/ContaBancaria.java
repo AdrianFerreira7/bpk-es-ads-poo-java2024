@@ -1,46 +1,26 @@
 package exercicio04;
 
-/**
- * 4 - Crie uma classe ContaBancaria com atributos como
- * numeroConta e saldo.
- * Adicione métodos para depositar e sacar dinheiro.
- */
 public class ContaBancaria {
-    private Integer numeroConta;
-    private Double saldo;
+    private String numeroConta;
+    private double saldo;
 
-    public ContaBancaria() {
-    }
-
-    public ContaBancaria(Integer numeroConta, Double saldo) {
+    public ContaBancaria(String numeroConta, double saldoInicial) {
         this.numeroConta = numeroConta;
-        this.saldo = 0.0;
-        if (saldo != null) {
-            this.saldo = saldo;
-        }
+        this.saldo = saldoInicial;
     }
 
-    public Integer getNumeroConta() {
-        return numeroConta;
+    public void depositar(double valor) {
+        saldo += valor;
+        System.out.println("Depósito de " + valor + " realizado. Saldo atual: " + saldo);
     }
 
-    public Double getSaldo() {
-        return saldo;
-    }
-
-    public void sacar(Double valor) {
-        if (valor > saldo) {
-            System.out.println("Você não tem saldo suficiente para sacar esse valor!");
+    public void sacar(double valor) {
+        if (valor <= saldo) {
+            saldo -= valor;
+            System.out.println("Saque de " + valor + " realizado. Saldo atual: " + saldo);
         } else {
-            saldo -= valor; // saldo = saldo - valor;
-        }
-    }
-
-    public void depositar(Double valor) {
-        if (valor <= 0) {
-            System.out.println("Valor de depósito inválido");
-        } else {
-            saldo += valor;
+            System.out.println("Saldo insuficiente para o saque de " + valor);
         }
     }
 }
+
